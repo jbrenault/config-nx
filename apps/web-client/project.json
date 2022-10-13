@@ -1,0 +1,47 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "web-client",
+  "projectType": "application",
+  "sourceRoot": "apps/web-client/src",
+  "targets": {
+    "build": {
+      "executor": "nx-vue3-vite:build-app",
+      "options": {
+        "dist": "dist/apps/web-client"
+      }
+    },
+    "serve": {
+      "executor": "nx-vue3-vite:dev-server"
+    },
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/web-client/cypress.config.ts",
+        "skipServe": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/web-client/**/*.{js,jsx,ts,tsx,vue}"]
+      }
+    },
+    "test": {
+      "executor": "@nxext/vitest:vitest",
+      "options": {
+        "command": "run",
+        "vitestConfig": "apps/web-client/vite.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "test-watch": {
+      "executor": "@nxext/vitest:vitest",
+      "options": {
+        "command": "watch",
+        "vitestConfig": "apps/web-client/vite.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
